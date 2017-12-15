@@ -14,6 +14,11 @@ export class EventsService{
         this._apiUrl = 'http://eventmanagerapiaspnetcore.azurewebsites.net/api/events';
     }
 
+    getEvent(id: number) : Observable<Event>{
+        return this.http.get(this._apiUrl + '/' + id)
+                    .map( (res: Response) => res.json() );
+    }
+
     getEvents() : Observable<Event[]>{
         return this.http.get(this._apiUrl)
                     .map( (res: Response) => res.json() );
@@ -37,5 +42,15 @@ export class EventsService{
         //         visible:true}
         // ];
     }
+
+    create(event: Event) : Observable<Event>{
+        return this.http.post(this._apiUrl, event)
+                    .map( (res: Response) => res.json() );
+    }    
+
+    update(event: Event) : Observable<Event>{
+        return this.http.put(this._apiUrl + '/' + event.id, event)
+                    .map( (res: Response) => res.json() );
+    }       
 
 }

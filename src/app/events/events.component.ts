@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Event } from "./events.model";
 import { EventsService } from './events.services';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-events',
@@ -15,7 +16,7 @@ export class EventsComponent {
 
     private _service: EventsService;
 
-    constructor(service: EventsService) { 
+    constructor(service: EventsService, private router: Router) { 
         this._service = service;
 
         this.formVisible = false;
@@ -26,7 +27,8 @@ export class EventsComponent {
         //alert('create');
         let newEvent = new Event();
         this.selectedEvent = newEvent;
-        this.showForm();
+        //this.showForm();
+        this.router.navigateByUrl('event');
     }
 
     edit(event: Event){
@@ -34,7 +36,8 @@ export class EventsComponent {
         //this.eventList.push(event);
         var eventToEdit = JSON.parse(JSON.stringify(event));
         this.selectedEvent = eventToEdit;//event;
-        this.showForm();
+        //this.showForm();
+        this.router.navigateByUrl('event/' + event.id);
     }
 
     delete(event: Event){

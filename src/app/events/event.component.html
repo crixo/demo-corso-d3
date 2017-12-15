@@ -4,6 +4,7 @@
     <div class="form-group">
         <label for="name">Name:</label>
         <input id="name" required
+            
             name="name" 
             #varToRefTheModel="ngModel"
             type="text"
@@ -14,6 +15,21 @@
         </div>
 
     </div>
+
+    <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" required
+            datepicker
+            name="startDate" 
+            #startDate="ngModel"
+            type="text"
+             [(ngModel)]="currentEvent.startDate" 
+            class="form-control" />
+        <div [hidden]="startDate.valid || startDate.pristine" class="alert alert-danger">
+            Name is required
+        </div>
+
+    </div>    
 
     <button type="button" class="btn btn-large btn-warning" (click)="save(item)">
         <i class="glyphicon glyphicon-ok"></i> Save 
