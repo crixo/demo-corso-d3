@@ -32,3 +32,8 @@
 </table>
 </div>
 <app-event *ngIf="formVisible" [currentEvent]="selectedEvent" (cancelled)="hideForm()" (onSaved)="saveForm()"></app-event>
+
+<button type="button" class="btn btn-info btn-lg" modalOpener="myModal">Open Modal</button>
+<app-modal modalId="myModal">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa amet laboriosam fugiat, perferendis cupiditate porro similique temporibus sequi voluptate laborum impedit ab nihil ad rem quis odit repellat cumque est!</p>
+</app-modal>

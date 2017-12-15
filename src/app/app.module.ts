@@ -18,13 +18,15 @@ import { SpeakersComponent } from './speakers/speakers.component';
 import { routing } from './app.routes';
 import { EventCanActivateGuard } from './events/eventcanactivate.guard';
 import { EventCanDeactivateGuard } from './events/eventcandeactivate.guard';
+import { ModalComponent } from './shared/modal.component';
+import { ModalOpenerDirective } from './shared/modalopener.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, EventsComponent, EventComponent, SpeakersComponent,
+    AppComponent, MenuComponent, EventsComponent, EventComponent, SpeakersComponent, ModalComponent,
     BooleanPipe,
-    DatePickerDirective
+    DatePickerDirective, ModalOpenerDirective
     
   ],
   imports: [
