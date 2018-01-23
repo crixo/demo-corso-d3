@@ -31,6 +31,11 @@ export class LoginComponent implements OnInit {
         this.service.login(
             this.loginFormGroup.controls.username.value,
             this.loginFormGroup.controls.password.value)
-            .subscribe(result=>console.log(result));
+            .subscribe(result=>{
+                localStorage.setItem('token', result.token);
+                console.log(result)});
+
+        this.service.getData()
+            .subscribe(result=> console.log(result));
     }
 }
