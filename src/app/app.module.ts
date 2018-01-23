@@ -20,11 +20,14 @@ import { EventCanActivateGuard } from './events/eventcanactivate.guard';
 import { EventCanDeactivateGuard } from './events/eventcandeactivate.guard';
 import { ModalComponent } from './shared/modal.component';
 import { ModalOpenerDirective } from './shared/modalopener.directive';
+import { EventsResolver } from './events/events.resolver';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { EventResolver } from './events/event.resolver';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, EventsComponent, EventComponent, SpeakersComponent, ModalComponent,
+    AppComponent, MenuComponent, EventsComponent, EventComponent, SpeakersComponent, ModalComponent, NotfoundComponent,
     BooleanPipe,
     DatePickerDirective, ModalOpenerDirective
     
@@ -32,7 +35,9 @@ import { ModalOpenerDirective } from './shared/modalopener.directive';
   imports: [
     BrowserModule, FormsModule, HttpModule, routing
   ],
-  providers: [EventsService, AppContextService, EventCanActivateGuard, EventCanDeactivateGuard], // registrato qui diventa un singleton
+  providers: [
+    EventsService, AppContextService, EventCanActivateGuard, EventCanDeactivateGuard, 
+    EventsResolver, EventResolver], // registrato qui diventa un singleton
   bootstrap: [AppComponent] // chi e' il primo component che parte
 })
 export class AppModule { }

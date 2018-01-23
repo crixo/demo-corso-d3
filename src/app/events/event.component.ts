@@ -34,14 +34,15 @@ export class EventComponent implements OnInit {
         private router: Router) { 
             
         //const id = this.activatedRoute.snapshot.params['id'];
-        const id = this.activatedRoute.params.subscribe(params => {if(params['id']){
-            this.service.getEvent(params['id']).subscribe(
-                args=>this.currentEvent=args,
-                err => console.log(err)); 
-        }});
-        console.log(id);
-
-        this.currentEvent = new Event();
+        // const id = this.activatedRoute.params.subscribe(params => {if(params['id']){
+        //     this.service.getEvent(params['id']).subscribe(
+        //         args=>this.currentEvent=args,
+        //         err => console.log(err)); 
+        // }});
+        // console.log(id);
+        // this.currentEvent = new Event();
+        // posso usare lo snapshot in quanto c'e' il resolver sul route
+        this.currentEvent = this.activatedRoute.snapshot.data['event'];
 
         // if(id){
         //     this.service.getEvent(id).subscribe(

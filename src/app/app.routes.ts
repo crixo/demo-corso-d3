@@ -5,6 +5,9 @@ import { SpeakersComponent } from './speakers/speakers.component';
 import { EventComponent } from './events/event.component';
 import { EventCanActivateGuard } from './events/eventcanactivate.guard';
 import { EventCanDeactivateGuard } from './events/eventcandeactivate.guard';
+import { EventsResolver } from './events/events.resolver';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { EventResolver } from './events/event.resolver';
 
 const appRoutes: Routes = [
     {
@@ -15,6 +18,8 @@ const appRoutes: Routes = [
     {
         path: 'events',
         component: EventsComponent,
+        data: { title: 'Lista eventi', subtitle: 'subtitle...' },
+        resolve: {events: EventsResolver}
         //canActivate: [EventCanActivateGuard, EventCanDeactivateGuard]
     },
     {
@@ -23,12 +28,17 @@ const appRoutes: Routes = [
     },   
     {
         path: 'event/:id',
-        component: EventComponent
+        component: EventComponent,
+        resolve: {event: EventResolver}
     },         
     {
         path: 'speakers',
         component: SpeakersComponent
-    },    
+    },        
+    {
+        path: 'notfound',
+        component: NotfoundComponent
+    },  
 ];
 
 // ho bisogno di una factory per generare il module in quanto qs richiede dei paramteri (routes) per essere costruito

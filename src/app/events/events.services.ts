@@ -3,6 +3,10 @@ import { Injectable } from "@angular/core";
 import {Http, Response} from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
+
+
 
 
 @Injectable()
@@ -21,6 +25,7 @@ export class EventsService{
 
     getEvents() : Observable<Event[]>{
         return this.http.get(this._apiUrl)
+                    .catch(err => {throw (err) })
                     .map( (res: Response) => res.json() );
         // return [
         //     {
