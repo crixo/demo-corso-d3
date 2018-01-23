@@ -23,6 +23,7 @@ import { ModalOpenerDirective } from './shared/modalopener.directive';
 import { EventsResolver } from './events/events.resolver';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { EventResolver } from './events/event.resolver';
+//import { SecurityModule } from './security/security.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { EventResolver } from './events/event.resolver';
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routing
+    //, SecurityModule //posso evitare import usando il routing/loadChildreeen
   ],
   providers: [
     EventsService, AppContextService, EventCanActivateGuard, EventCanDeactivateGuard, 

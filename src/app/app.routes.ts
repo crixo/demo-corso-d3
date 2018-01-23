@@ -8,6 +8,7 @@ import { EventCanDeactivateGuard } from './events/eventcandeactivate.guard';
 import { EventsResolver } from './events/events.resolver';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { EventResolver } from './events/event.resolver';
+import { PreloadAllModules } from '@angular/router/src/router_preloader';
 
 const appRoutes: Routes = [
     {
@@ -39,9 +40,17 @@ const appRoutes: Routes = [
         path: 'notfound',
         component: NotfoundComponent
     },  
+    {
+        path: 'security',
+        // posso accedere al login usando "/security/login"
+        // lazy-loading per caricare moduli
+        loadChildren: './security/security.module#SecurityModule' 
+    }
 ];
 
 // ho bisogno di una factory per generare il module in quanto qs richiede dei paramteri (routes) per essere costruito
 // x qs ragione non posso farne imports in app.module.ts come per gli altri
 export const routing: ModuleWithProviders = 
     RouterModule.forRoot(appRoutes);
+    // per disabilitare lazy-loading dei modules 
+    //.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules});
